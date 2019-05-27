@@ -34,7 +34,7 @@ class Navbar extends Component {
     }
 
     render() {
-        const { lavel, changeLavel } = this.props;
+        const { lavel, changeLavel, showAllColors } = this.props;
         const { format, open } = this.state;
 
         return (
@@ -42,18 +42,20 @@ class Navbar extends Component {
                 <div className="logo">
                     <Link to="/">react color picker</Link>
                 </div>
-                <div className="slider-container">
-                    <span>Lavel: { lavel }</span>
-                    <div className="slider">
-                        <Slider
-                            defaultValue={ lavel }
-                            min={ 100 }
-                            max={ 900 }
-                            onAfterChange={ changeLavel }
-                            step={ 100 }
-                        />
+                { showAllColors &&
+                    <div className="slider-container">
+                        <span>Lavel: { lavel }</span>
+                        <div className="slider">
+                            <Slider
+                                defaultValue={ lavel }
+                                min={ 100 }
+                                max={ 900 }
+                                onAfterChange={ changeLavel }
+                                step={ 100 }
+                            />
+                        </div>
                     </div>
-                </div>
+                }
                 <div className="select-container">
                     <Select value={ format } onChange={ this.handleFormatChange }>
                         <MenuItem value="hex">HEX - #ffffff</MenuItem>
