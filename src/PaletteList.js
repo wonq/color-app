@@ -9,6 +9,7 @@ const styles = {
         backgroundColor: "blue",
         height: "100%",
         display: "flex",
+        flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "center",
     },
