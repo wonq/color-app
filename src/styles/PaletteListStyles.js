@@ -1,18 +1,18 @@
 export default {
     root: {
-        backgroundColor: "blue",
-        height: "100%",
+        height: "100vh",
         display: "flex",
-        flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "center",
+        backgroundColor: "#394bad",
+        // overflow: "scroll"
     },
     container: {
         width: "50%",
         display: "flex",
         alignItems: "flex-start",
         flexDirection: "column",
-        flexWrap: "wrap",
+        flexWrap: "wrap"
     },
     nav: {
         display: "flex",
@@ -20,12 +20,15 @@ export default {
         justifyContent: "space-between",
         alignItems: "center",
         color: "white",
+        "& a": {
+            color: "white"
+        }
     },
-      palettes: {
+    palettes: {
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: "repeat( 3, 30% )",
-        gridGap: "2.5rem",
+        gridTemplateColumns: "repeat(3, 30%)",
+        gridGap: "2.5rem"
     }
 };
