@@ -5,7 +5,7 @@ export default {
         alignItems: "flex-start",
         justifyContent: "center",
         backgroundColor: "#394bad",
-        // overflow: "scroll"
+        overflow: "scroll"
     },
     container: {
         width: "50%",
