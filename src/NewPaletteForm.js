@@ -10,11 +10,14 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import Button from "@material-ui/core/Button";
+import { ChromePicker } from "react-color";
+
 import styles from "./styles/NewPaletteStyles";
 
 class NewPaletteForm extends Component {
 	state = {
-		open: false,
+		open: true,
 	};
 
 	handleDrawerOpen = () => {
@@ -68,6 +71,33 @@ class NewPaletteForm extends Component {
 						</IconButton>
 					</div>
 					<Divider />
+					<Typography variant="h4">
+						Design Your Palette
+					</Typography>
+					<div className={ classes.buttons }>
+						<Button
+							variant='contained'
+							color='secondary'
+							className={ classes.button }
+						>
+							Clear Palette
+						</Button>
+						<Button
+							variant='contained'
+							color='primary'
+							className={ classes.button }
+						>
+							Random Color
+						</Button>
+					</div>
+					<ChromePicker />
+					<Button
+						variant='contained'
+						color='primary'
+						className={ classes.button }
+					>
+						Add Color
+					</Button>
 				</Drawer>
 				<main
 					className={classNames(classes.content, {
