@@ -27,15 +27,15 @@ const styles = theme => ({
         height: "calc(100vh - 64px)",
         padding: 0,
         transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen
         }),
         marginLeft: -drawerWidth
     },
     contentShift: {
         transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen
         }),
         marginLeft: 0
     },
