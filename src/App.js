@@ -25,7 +25,6 @@ class App extends Component {
 	}
 
 	savePalette( newPalette ) {
-		// console.log( newPalette );
 		this.setState({
 			palettes: [ ...this.state.palettes, newPalette ]
 		})
@@ -42,6 +41,7 @@ class App extends Component {
 							{ ...routeProps }
 							savePalette={ this.savePalette }
 							palettes={ this.state.palettes }
+							colors={ this.state.palettes[6].colors }
 						/>
 					)}
 				/>
