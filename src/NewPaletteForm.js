@@ -13,7 +13,7 @@ import PaletteFormNav from './PaletteFormNav';
 import DraggableColorList from './DraggableColorList';
 import ColorPickerForm from './ColorPickerForm';
 
-import styles from "./styles/NewPaletteStyles";
+import styles from "./styles/NewPaletteFormStyles";
 
 class NewPaletteForm extends Component {
 	static defaultProps = {
