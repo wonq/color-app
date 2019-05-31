@@ -55,17 +55,23 @@ class PaletteFormNav extends Component {
         super(props);
         this.state = {
 			newPaletteName: "",
-			formShowing: true
+			formShowing: false
         }
-        this.formShowing = this.formShowing.bind( this );
+        this.showForm = this.showForm.bind(this);
+        this.hideForm = this.hideForm.bind( this );
     }
 
-	formShowing() {
+	showForm() {
 		this.setState({ formShowing: true })
+	};
+
+	hideForm() {
+		this.setState({ formShowing: false })
 	};
 
 	render() {
 		const { classes, open, palettes, handleSubmit } = this.props;
+		const { formShowing } = this.state;
 
         return (
             <div>
@@ -104,15 +110,19 @@ class PaletteFormNav extends Component {
 						<Button
 							variant='contained'
 							color="primary"
-							onClick={ this.formShowing }
+							onClick={ this.showForm }
 							className={ classes.button }
 						>
 							Save
 						</Button>
 					</div>
 				</AppBar>
-				{ this.state.formShowing && (
-					<PaletteMetaForm palettes={ palettes } handleSubmit={ handleSubmit } />
+				{ formShowing && (
+					<PaletteMetaForm
+						palettes={ palettes }
+						handleSubmit={ handleSubmit }
+						hideForm={ this.hideForm }
+					/>
 				)}
             </div>
         );
