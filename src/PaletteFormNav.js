@@ -9,7 +9,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import { ValidatorForm } from 'react-material-ui-form-validator';
 
 import PaletteMetaForm from "./PaletteMetaForm";
 
@@ -45,6 +44,9 @@ const styles = theme => ({
 		"& a": {
 			textDecoration: "none"
 		}
+	},
+	button: {
+		margin: "0 0.5rem",
 	}
 });
 
@@ -52,26 +54,17 @@ class PaletteFormNav extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newPaletteName: ""
+			newPaletteName: "",
+			formShowing: true
         }
-        this.handleChange = this.handleChange.bind( this );
+        this.formShowing = this.formShowing.bind( this );
     }
 
-    componentDidMount() {
-        ValidatorForm.addValidationRule( 'isPaletteNameUnique', value =>
-			this.props.palettes.every(
-				({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-			)
-        );
+	formShowing() {
+		this.setState({ formShowing: true })
 	};
 
-	handleChange( event ) {
-		this.setState({
-			[ event.target.name ]: event.target.value
-		})
-	};
-
-    render() {
+	render() {
 		const { classes, open, palettes, handleSubmit } = this.props;
 
         return (
@@ -99,17 +92,28 @@ class PaletteFormNav extends Component {
 						</Typography>
 					</Toolbar>
 					<div className={ classes.navBtns }>
-						<PaletteMetaForm
-							palettes={ palettes }
-							handleSubmit={ handleSubmit }
-						/>
 						<Link to="/">
-							<Button variant='contained' color='secondary'>
+							<Button
+								className={ classes.button }
+								variant='contained'
+								color='secondary'
+							>
 								Go Back
 							</Button>
 						</Link>
+						<Button
+							variant='contained'
+							color="primary"
+							onClick={ this.formShowing }
+							className={ classes.button }
+						>
+							Save
+						</Button>
 					</div>
 				</AppBar>
+				{ this.state.formShowing && (
+					<PaletteMetaForm palettes={ palettes } handleSubmit={ handleSubmit } />
+				)}
             </div>
         );
     }
