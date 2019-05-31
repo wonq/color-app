@@ -19,8 +19,8 @@ const styles = theme => ({
 	},
 	appBar: {
 		transition: theme.transitions.create(["margin", "width"], {
-		  easing: theme.transitions.easing.sharp,
-		  duration: theme.transitions.duration.leavingScreen
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen
 		}),
 		flexDirection: "row",
 		justifyContent: "space-between",
@@ -70,11 +70,11 @@ class PaletteFormNav extends Component {
 	};
 
 	render() {
-		const { classes, open, palettes, handleSubmit } = this.props;
+		const { classes, open, palettes, handleSubmit, handleDrawerOpen } = this.props;
 		const { formShowing } = this.state;
 
         return (
-            <div>
+            <div className={ classes.root }>
 				<CssBaseline />
 				<AppBar
 					position="fixed"
@@ -87,7 +87,7 @@ class PaletteFormNav extends Component {
 						<IconButton
 							color="inherit"
 							aria-label="Open drawer"
-							onClick={ this.props.handleDrawerOpen }
+							onClick={ handleDrawerOpen }
 							edge="start"
 							className={ classNames( classes.menuButton, open && classes.hide )}
 						>
