@@ -6,7 +6,7 @@ export default {
         display: "inline-block",
         position: "relative",
         cursor: "pointer",
-        marginBottom: "-3.5px",
+        marginBottom: "-7px",
         "&:hover svg": {
             color: "white",
             transform: "scale( 1.5 )"

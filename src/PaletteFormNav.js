@@ -5,10 +5,10 @@ import classNames from "classnames";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import MenuIcon from '@material-ui/icons/Menu';
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
 
 import PaletteMetaForm from "./PaletteMetaForm";
 
@@ -44,7 +44,7 @@ class PaletteFormNav extends Component {
 					position="fixed"
 					color="default"
 					className={ classNames( classes.appBar, {
-						[ classes.appBarShift ]: open,
+						[ classes.appBarShift ]: open
 					})}
 				>
 					<Toolbar>
@@ -53,9 +53,11 @@ class PaletteFormNav extends Component {
 							aria-label="Open drawer"
 							onClick={ handleDrawerOpen }
 							edge="start"
-							className={ classNames( classes.menuButton, open && classes.hide )}
+							className={ classNames( classes.menuButton, {
+								[ classes.hide ]: open
+							})}
 						>
-							<MenuIcon />
+							<AddToPhotosIcon />
 						</IconButton>
 						<Typography variant="h6" noWrap>
 							Create A Palette
