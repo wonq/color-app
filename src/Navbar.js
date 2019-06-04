@@ -12,9 +12,6 @@ import { withStyles } from '@material-ui/styles';
 import styles from './styles/NavbarStyles';
 
 const Navbar = ( props ) => {
-    const [ format, setFormat ] = useState( "hex" );
-    const [ open, setOpen ] = useState( false );
-
     const {
         handleChange,
         lavel,
@@ -22,13 +19,13 @@ const Navbar = ( props ) => {
         showAllColors,
         classes
     } = props;
-
+    const [ format, setFormat ] = useState( "hex" );
+    const [ open, setOpen ] = useState( false );
     const handleFormatChange = ( event ) => {
         setFormat( event.target.value );
         setOpen( true );
         handleChange( event.target.value );
     };
-
     const closeSnackbar = () => setOpen( false );
 
     return (

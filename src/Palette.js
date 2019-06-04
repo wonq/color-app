@@ -8,10 +8,10 @@ import PaletteFooter from './PaletteFooter';
 import styles from './styles/PaletteStyles';
 
 const Palette = ( props ) => {
-    const [ lavel, setLavel ] = useState( 500 );
-    const [ format, setFormat ] = useState( "hex" );
     const { colors, paletteName, emoji, id } = props.palette;
     const { classes } = props;
+    const [ lavel, setLavel ] = useState( 500 );
+    const [ format, setFormat ] = useState( "hex" );
     const changeLavel = ( lavel ) => setLavel( lavel );
     const changeFormat = ( value ) => setFormat( value );
     const colorBoxes = colors[ lavel ].map( color => (
