@@ -7,8 +7,8 @@ import classNames from "classnames";
 import styles from './styles/ColorBoxStyles';
 
 const ColorBox = ( props ) => {
-    const { background, name, moreUrl, showingFullPalette, classes } = props;
     const [ copied, onCopy ] = useState( false );
+    const { background, name, moreUrl, showingFullPalette, classes } = props;
     const changeCopyState = () => {
         onCopy( true );
         setTimeout( () =>

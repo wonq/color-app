@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import classNames from "classnames";
@@ -14,73 +14,85 @@ import PaletteMetaForm from "./PaletteMetaForm";
 
 import styles from "./styles/PaletteFormNavStyles";
 
-const PaletteFormNav = ( props ) => {
-	const { classes, open, palettes, handleSubmit, handleDrawerOpen } = props;
-	const [ formShowing, setFormShowing ] = useState( false );
+class PaletteFormNav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+			newPaletteName: "",
+			formShowing: false
+        }
+        this.showForm = this.showForm.bind(this);
+        this.hideForm = this.hideForm.bind( this );
+    }
 
-	const showForm = () => {
-		setFormShowing( true )
+	showForm() {
+		this.setState({ formShowing: true })
 	};
 
-	const hideForm = () => {
-		setFormShowing( false )
+	hideForm() {
+		this.setState({ formShowing: false })
 	};
 
-	return (
-		<div className={ classes.root }>
-			<CssBaseline />
-			<AppBar
-				position="fixed"
-				color="default"
-				className={ classNames( classes.appBar, {
-					[ classes.appBarShift ]: open
-				})}
-			>
-				<Toolbar>
-					<IconButton
-						color="inherit"
-						aria-label="Open drawer"
-						onClick={ handleDrawerOpen }
-						edge="start"
-						className={ classNames( classes.menuButton, {
-							[ classes.hide ]: open
-						})}
-					>
-						<AddToPhotosIcon />
-					</IconButton>
-					<Typography variant="h6" noWrap>
-						Create A Palette
-					</Typography>
-				</Toolbar>
-				<div className={ classes.navBtns }>
-					<Link to="/">
-						<Button
-							className={ classes.button }
-							variant='contained'
-							color='secondary'
+	render() {
+		const { classes, open, palettes, handleSubmit, handleDrawerOpen } = this.props;
+		const { formShowing } = this.state;
+
+        return (
+            <div className={ classes.root }>
+				<CssBaseline />
+				<AppBar
+					position="fixed"
+					color="default"
+					className={ classNames( classes.appBar, {
+						[ classes.appBarShift ]: open
+					})}
+				>
+					<Toolbar>
+						<IconButton
+							color="inherit"
+							aria-label="Open drawer"
+							onClick={ handleDrawerOpen }
+							edge="start"
+							className={ classNames( classes.menuButton, {
+								[ classes.hide ]: open
+							})}
 						>
-							Go Back
+							<AddToPhotosIcon />
+						</IconButton>
+						<Typography variant="h6" noWrap>
+							Create A Palette
+						</Typography>
+					</Toolbar>
+					<div className={ classes.navBtns }>
+						<Link to="/">
+							<Button
+								className={ classes.button }
+								variant='contained'
+								color='secondary'
+							>
+								Go Back
+							</Button>
+						</Link>
+						<Button
+							variant='contained'
+							color="primary"
+							onClick={ this.showForm }
+							className={ classes.button }
+						>
+							Save
 						</Button>
-					</Link>
-					<Button
-						variant='contained'
-						color="primary"
-						onClick={ showForm }
-						className={ classes.button }
-					>
-						Save
-					</Button>
-				</div>
-			</AppBar>
-			{ formShowing && (
-				<PaletteMetaForm
-					palettes={ palettes }
-					handleSubmit={ handleSubmit }
-					hideForm={ hideForm }
-				/>
-			)}
-		</div>
-	);
+					</div>
+				</AppBar>
+				{ formShowing && (
+					<PaletteMetaForm
+						palettes={ palettes }
+						handleSubmit={ handleSubmit }
+						hideForm={ this.hideForm }
+					/>
+				)}
+            </div>
+        );
+    }
 }
 
 
