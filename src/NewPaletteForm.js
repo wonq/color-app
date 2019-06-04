@@ -9,6 +9,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import Button from "@material-ui/core/Button";
 import arrayMove from 'array-move';
 
+import seedColors from './seedColors';
 import PaletteFormNav from './PaletteFormNav';
 import DraggableColorList from './DraggableColorList';
 import ColorPickerForm from './ColorPickerForm';
@@ -24,8 +25,7 @@ class NewPaletteForm extends Component {
 		super(props);
 		this.state = {
 			open: false,
-			// colors: [],
-			colors: this.props.palettes[0].colors,
+			colors: seedColors[6].colors
 		};
 		this.handleSubmit = this.handleSubmit.bind( this );
 		this.removeColor = this.removeColor.bind( this );
@@ -54,7 +54,8 @@ class NewPaletteForm extends Component {
 
 	addRandomColors() {
 		// Pick random color from exiting palettes
-		const allColors = this.props.palettes.map( p => p.colors ).flat();
+		// const allColors = this.props.palettes.map( p => p.colors ).flat();
+		const allColors = seedColors.map( p => p.colors ).flat();
 		let rand = Math.floor( Math.random() * allColors.length );
 		const randomColor = allColors[ rand ];
 		this.setState({ colors: [ ...this.state.colors, randomColor ] })
